@@ -17,6 +17,6 @@ def get_replies(request, pk):
     elif request.method == "POST":
         serializer = ReplySerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(text=request.text)
+            serializer.save(user=request.user, comment_id = pk)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
