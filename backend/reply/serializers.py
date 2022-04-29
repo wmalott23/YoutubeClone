@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.reply.models import Reply
+from .models import Reply
 
 class ReplySerializer(serializers.ModelSerializer):
     class Meta:
