@@ -2,5 +2,5 @@ from django.urls import path, include
 from reply import views
 
 urlpatterns = [
-    path()
+    path('', views.get_replies)
 ]

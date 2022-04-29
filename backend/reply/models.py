@@ -1,6 +1,7 @@
+from xml.etree.ElementTree import Comment
 from django.db import models
 from authentication.models import User
-from ./comment/models import Comment
+from .models import Comment
 
 # Create your models here.
 class Reply(models.Model):
