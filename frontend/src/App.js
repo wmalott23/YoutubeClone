@@ -14,6 +14,7 @@ import SearchPage from "./components/SearchPage/SearchPage";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import VideoPage from "./components/VideoPage/VideoPage";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/video" element={<VideoPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
