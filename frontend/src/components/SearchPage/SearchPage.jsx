@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import API_KEY from "../../secret.jsx";
 
-const API_KEY = process.env.REACT_APP_API_KEY
 const SearchPage = (props) => {
 
     const [videos, setVideos] = useState({})
@@ -10,6 +10,7 @@ const SearchPage = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         console.log(searchTerm)
+        console.log(API_KEY)
         try{
             let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${API_KEY}`)
             setVideos(response.data)
