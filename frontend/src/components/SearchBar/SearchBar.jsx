@@ -17,8 +17,9 @@ const SearchBar = (props) => {
         catch(e){
             console.log(e.message)
         }
-        console.log(videos)
+        console.log(videos.items[0].id)
         console.log(videos.items[0].id.videoId) // 1st video ID of search
+        props.setSearchResults(videos.items)
     }
 
     return ( 
