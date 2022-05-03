@@ -18,7 +18,7 @@ const HomePage = (props) => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=football&key=${API_KEY}&part=snippet&type=video`)
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=css&key=${API_KEY}&part=snippet&type=video`)
         setVideos(response.data.items);
       } catch (error) {
         console.log(error.message);
