@@ -6,7 +6,7 @@ import SearchResult from "./SearchResult/SearchResult";
 const SearchPage = (props) => {
 
     const [searchResults, setSearchResults] = useState([])
-
+    
 
     return ( 
         <div>

@@ -32,7 +32,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/video" element={<VideoPage />} />
+        <Route path="/video/:videoId" element={<VideoPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />

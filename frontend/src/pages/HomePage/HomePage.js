@@ -2,26 +2,24 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import API_KEY from "../../secret.jsx";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 
 
 import axios from "axios";
 
 const HomePage = () => {
-  // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
+  // The "user" value from this Hook contains the decoded logged in user information
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
-  //TODO: Add an AddCars Page to add a car for a logged in user's garage
+  
   const [user, token] = useAuth();
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=football&key=${API_KEY}&part=snippet&type=video`, {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setVideos(response.data);
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=football&key=${API_KEY}&part=snippet&type=video`)
+        setVideos(response.data.items);
       } catch (error) {
         console.log(error.message);
       }
@@ -30,13 +28,15 @@ const HomePage = () => {
   }, [token]);
   return (
     <div className="container">
+      <SearchBar />
       <h1>Home Page for {user.username}!</h1>
-      {videos &&
-        videos.map((video) => (
-          <p key={video.items.id.videoId}> 
-            <img src={video.items.snippet.thumbnails.high.url} alt="no video"/>
-            {video.items.snippet.title}
-          </p>
+      {videos.map((video, index) => (
+          <div key={index}>
+            {video.snippet.title}
+            <Link to={`/video/${video.id.videoId}`}>
+              <img src={video.snippet.thumbnails.high.url} alt="no video"/>
+            </Link>
+          </div>
         ))}
     </div>
   );
