@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 const VideoPage = (props) => {
 
     const {videoId} = useParams()
+    const video = props.video
 
     return ( 
         <div>
@@ -11,6 +12,9 @@ const VideoPage = (props) => {
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`}
             frameborder="0">
             </iframe>
+            {video.snippet.title}
+            {video.snippet.description}
+
         </div>
      );
 }

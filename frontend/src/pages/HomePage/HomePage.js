@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-const HomePage = () => {
+const HomePage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   
@@ -33,7 +33,7 @@ const HomePage = () => {
       {videos.map((video, index) => (
           <div key={index}>
             {video.snippet.title}
-            <Link to={`/video/${video.id.videoId}`}>
+            <Link to={`/video/${video.id.videoId}`} onClick={props.setVideo(video)}>
               <img src={video.snippet.thumbnails.high.url} alt="no video"/>
             </Link>
           </div>

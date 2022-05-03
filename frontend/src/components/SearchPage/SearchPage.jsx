@@ -27,11 +27,11 @@ const SearchPage = (props) => {
     return ( 
         <div>
             <SearchBar/>
-        {searchResults.map((searchResults, index) => (
+        {searchResults.map((searchResult, index) => (
             <div key={index}>
-              {searchResults.snippet.title}
-              <Link to={`/video/${searchResults.id.videoId}`}>
-                <img src={searchResults.snippet.thumbnails.high.url} alt="no video"/>
+              {searchResult.snippet.title}
+              <Link to={`/video/${searchResult.id.videoId}`} onClick={props.setVideo(searchResult)}>
+                <img src={searchResult.snippet.thumbnails.high.url} alt="no video"/>
               </Link>
             </div>
           ))}

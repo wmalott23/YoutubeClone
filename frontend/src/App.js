@@ -1,5 +1,6 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
+import React, { useState } from 'react';
 import "./App.css";
 
 // Pages Imports
@@ -18,7 +19,8 @@ import VideoPage from "./components/VideoPage/VideoPage";
 
 
 function App() {
-
+  const [user, setUser] = useState('')
+  const [video, setVideo] = useState({})
   
   return (
     <div>
@@ -28,12 +30,12 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage setVideo = {setVideo}/>
             </PrivateRoute>
           }
         />
-        <Route path="/video/:videoId" element={<VideoPage />} />
-        <Route path="/search/:searchTerm" element={<SearchPage />} />
+        <Route path="/video/:videoId" element={<VideoPage video = {video}/>} />
+        <Route path="/search/:searchTerm" element={<SearchPage setVideo = {setVideo} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
