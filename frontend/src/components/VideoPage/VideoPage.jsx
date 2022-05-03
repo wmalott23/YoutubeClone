@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const VideoPage = (props) => {
 
+    const [comment, setComment] = useState('')
     const {videoId} = useParams()
     const video = props.video
     const [searchResults, setSearchResults] = useState([])
@@ -26,7 +27,6 @@ const VideoPage = (props) => {
 
     return ( 
         <div>
-            
             <iframe id="ytplayer" type="text/html" width="640" height="360"
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`}
             frameBorder="0">
@@ -43,7 +43,11 @@ const VideoPage = (props) => {
               </Link>
             </div>
           ))}
+          <div>
+            
+          </div>
         </div>
+        
      );
 }
 export default VideoPage;

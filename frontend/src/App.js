@@ -19,7 +19,6 @@ import VideoPage from "./components/VideoPage/VideoPage";
 
 
 function App() {
-  const [user, setUser] = useState('')
   const [video, setVideo] = useState({})
   
   return (
