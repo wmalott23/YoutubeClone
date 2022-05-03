@@ -33,7 +33,7 @@ function App() {
           }
         />
         <Route path="/video/:videoId" element={<VideoPage />} />
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search/:searchTerm" element={<SearchPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>

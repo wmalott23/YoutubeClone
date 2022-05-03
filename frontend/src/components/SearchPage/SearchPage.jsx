@@ -1,30 +1,42 @@
 import SearchBar from "../SearchBar/SearchBar";
-import React, { useState } from 'react';
-import SearchResult from "./SearchResult/SearchResult";
+import React, { useEffect, useState } from 'react';
+import API_KEY from "../../secret.jsx";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 
 const SearchPage = (props) => {
 
+    const {searchTerm} = useParams()
     const [searchResults, setSearchResults] = useState([])
     
+    useEffect(() => {
+        const fetchVideos = async () => {
+          try {
+            let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${API_KEY}&part=snippet&type=video`)
+            setSearchResults(response.data.items);
+          } catch (error) {
+            console.log(error.message);
+          }
+        };
+        fetchVideos();
+      }, []);
 
     return ( 
         <div>
-
-        <div>
-        
-            <SearchBar setSearchResults={setSearchResults}/>
-            
+            <SearchBar/>
+        {searchResults.map((searchResults, index) => (
+            <div key={index}>
+              {searchResults.snippet.title}
+              <Link to={`/video/${searchResults.id.videoId}`}>
+                <img src={searchResults.snippet.thumbnails.high.url} alt="no video"/>
+              </Link>
+            </div>
+          ))}
         </div>
-                <div>
-                    <SearchResult   video_id={searchResults.items.id.videoId}
-                                    thumbnail={searchResults.items.snippet.thumbnails.high}
-                                    description={searchResults.items.snippet.description}
-                                    title={searchResults.items.snippet.title}
-                    />
-                </div>
 
-        </div>
      );
 }
  
