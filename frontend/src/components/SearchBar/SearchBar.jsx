@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import API_KEY from "../../secret.jsx";
 
+
 const SearchBar = (props) => {
 
     const [videos, setVideos] = useState({})
@@ -11,7 +12,7 @@ const SearchBar = (props) => {
         event.preventDefault()
         console.log(searchTerm)
         try{
-            let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${API_KEY}`)
+            let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${API_KEY}&part=snippet&type=video`)
             setVideos(response.data)
         }
         catch(e){
@@ -19,7 +20,8 @@ const SearchBar = (props) => {
         }
         console.log(videos.items[0].id)
         console.log(videos.items[0].id.videoId) // 1st video ID of search
-        props.setSearchResults(videos.items)
+
+        setSearchTerm(videos)
     }
 
     return ( 

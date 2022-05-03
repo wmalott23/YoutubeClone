@@ -7,16 +7,23 @@ const SearchPage = (props) => {
 
     const [searchResults, setSearchResults] = useState([])
 
-    let results = searchResults.map((el) => {
-        return el.id.videoId
-    })
 
     return ( 
+        <div>
+
         <div>
         
             <SearchBar setSearchResults={setSearchResults}/>
             
-            {results}
+        </div>
+                <div>
+                    <SearchResult   video_id={searchResults.items.id.videoId}
+                                    thumbnail={searchResults.items.snippet.thumbnails.high}
+                                    description={searchResults.items.snippet.description}
+                                    title={searchResults.items.snippet.title}
+                    />
+                </div>
+
         </div>
      );
 }

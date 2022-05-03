@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 
-const SearchResult = ({video_id}) => {
+const SearchResult = ({video_id, thumbnail, description, title}) => {
     return ( 
-        <p>
+        <div>
             {video_id}
-        </p>
+            {thumbnail}
+            {description}
+            {title}
+        </div>
      );
 }
  
