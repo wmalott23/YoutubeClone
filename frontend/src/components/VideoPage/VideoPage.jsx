@@ -22,7 +22,7 @@ const VideoPage = (props) => {
           }
         };
         fetchVideos();
-      }, []);
+      }, [video]);
 
     return ( 
         <div>
