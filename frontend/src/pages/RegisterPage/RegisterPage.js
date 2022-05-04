@@ -13,7 +13,7 @@ const RegisterPage = () => {
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
-    registerUser
+    registerUser,
   );
 
   return (

@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import API_KEY from "../../secret.jsx";
 
 
 
 const RelatedVideos = (props) => {
 
- 
-
-    
 
     return ( 
         <div>
-        
+            {props.searchResults.map((searchResult, index) => (
+            <div key={index}>
+              {searchResult.snippet.title}
+              <Link to={`/video/${searchResult.id.videoId}`} onClick={props.setVideo(searchResult)}>
+                <img src={searchResult.snippet.thumbnails.default.url} alt="no video"/>
+              </Link>
+            </div>
+          ))}
         </div>
     )
 }
