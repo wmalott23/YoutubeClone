@@ -7,37 +7,42 @@ import useAuth from "../../hooks/useAuth";
 
 const CommentForm = (props) => {
 
-    const [text, setText] = useState('')
+    const [textBody, setTextBody] = useState('')
     const videoId = props.videoId
     const [user, token] = useAuth();
 
 
-    const [comment, setComment] = useState({
-        "video_id" : videoId,
-        "text" : text
-    })
+    // let comment = {
+    //     video_id : videoId,
+    //     text : textBody
+    // }
 
 
     const storeComment = async (event) => {
         event.preventDefault();
+        let comment = {
+            video_id : videoId,
+            text : textBody
+        }
         try {
             let response = await axios.post(`http://127.0.0.1:8000/api/comments/`, comment, {
                 headers: {
                     Authorization: "Bearer " + token,
                 },
             });
-            console.log(response)
+            
         } catch (error) {
             console.log(error.message);
         }
+        console.log(comment)
     }
 
 
 
     return ( 
         <form onSubmit={storeComment}>
-            <input value={text} placeholder="Write your comment here!">
-            </input>
+            <textarea value={textBody} placeholder="Write your comment here!" onChange={(event) => setTextBody(event.target.value)}>
+            </textarea>
             <button type="submit">
                 Submit
             </button>

@@ -6,6 +6,7 @@ import API_KEY from "../../secret.jsx";
 import { Link } from "react-router-dom";
 import CommentForm from "../CommentForm/CommentForm";
 import useAuth from "../../hooks/useAuth";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 
 
@@ -33,10 +34,7 @@ const VideoPage = (props) => {
 
     return ( 
         <div>
-            <iframe id="ytplayer" type="text/html" width="640" height="360"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`}
-            frameBorder="0">
-            </iframe>
+            <VideoPlayer videoId={videoId} />
             {video.snippet.title}
             {video.snippet.description}
             <RelatedVideos searchResults={searchResults} setVideo={props.setVideo} />
