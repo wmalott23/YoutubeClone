@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 import CommentForm from "../CommentForm/CommentForm";
 import useAuth from "../../hooks/useAuth";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import CommentList from "../CommentList/CommentList";
 
 
 
 const VideoPage = (props) => {
 
-    const [comment, setComment] = useState('')
     const {videoId} = useParams()
     const video = props.video
     const [searchResults, setSearchResults] = useState([])
@@ -50,6 +50,7 @@ const VideoPage = (props) => {
                         <CommentForm videoId={videoId} />
                 }
           </div>
+            <CommentList videoId={videoId}/>
         </div>
         
      );

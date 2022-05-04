@@ -11,13 +11,6 @@ const CommentForm = (props) => {
     const videoId = props.videoId
     const [user, token] = useAuth();
 
-
-    // let comment = {
-    //     video_id : videoId,
-    //     text : textBody
-    // }
-
-
     const storeComment = async (event) => {
         event.preventDefault();
         let comment = {
