@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Comment from '../Comment/Comment'
+import Comment from '../Comment/Comment';
 import useAuth from "../../hooks/useAuth";
 import CommentForm from '../CommentForm/CommentForm';
-
-
+import ReplyList from '../ReplyList/ReplyList';
 
 
 const CommentList = (props) => {
@@ -15,7 +14,6 @@ const CommentList = (props) => {
 
     useEffect(() => {
         fetchComments();
-        console.log(videoId)
         }, [])    
 
     const fetchComments = async () => { 
@@ -26,22 +24,23 @@ const CommentList = (props) => {
             console.log(error.message);
         }
     }
+
     
     return ( 
         <div>
-                {!user ? 
-                        <form >
-                            <textarea placeholder="You must be logged in to post a comment">
-                            </textarea>
-                            <button >
-                            </button>
-                        </form> :
-                        <CommentForm videoId={videoId} fetchComments={fetchComments}/>
-                }
+            {!user ? 
+                <form >
+                    <textarea placeholder="You must be logged in to post a comment"/>
+                    <button >
+                    </button>
+                </form> :
+                <CommentForm videoId={videoId} fetchComments={fetchComments}/>
+            }
             {comments.map((comment) => {
-                    return (<Comment user={comment.user.username} textBody={comment.text}/>
-                        
-                    )})}
+                return (
+                        <Comment user={comment.user.username} textBody={comment.text}/>
+                        <ReplyList commentId={comment.id} />
+                )})}
         </div>
      );
 }
