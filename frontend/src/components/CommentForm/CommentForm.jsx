@@ -22,12 +22,14 @@ const CommentForm = (props) => {
                 headers: {
                     Authorization: "Bearer " + token,
                 },
+            
             });
             
         } catch (error) {
             console.log(error.message);
         }
         console.log(comment)
+        props.fetchComments()
     }
 
 
