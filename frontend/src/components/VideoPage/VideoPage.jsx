@@ -5,7 +5,7 @@ import axios from "axios";
 import API_KEY from "../../secret.jsx";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import CommentList from "../CommentList/CommentList";
-
+import SearchBar from "../SearchBar/SearchBar"
 
 
 const VideoPage = (props) => {
@@ -34,6 +34,7 @@ const VideoPage = (props) => {
 
     return ( 
         <div>
+          <SearchBar />
           {console.log(props.video)}
             <VideoPlayer videoId={videoId} />
             {props.video.snippet.title}
