@@ -11,11 +11,9 @@ const ReplyList = (props) => {
     const [user, token] = useAuth();
     const commentId = props.commentId
 
-
     useEffect(() => {
         fetchReplies()
         }, [])    
-
 
     const fetchReplies = async () => { 
         try {
@@ -29,22 +27,17 @@ const ReplyList = (props) => {
         }
     }
 
-    
     return ( 
         <div>
-        {!user ? 
-                <form >
-                    <textarea placeholder="You must be logged in to post a reply">
-                    </textarea>
-                    <button >
-                    </button>
-                </form> :
-                <ReplyForm commentId={commentId} fetchReplies={fetchReplies}/>
-        }
-    {replies.map((reply) => {
-            return (<Reply user={reply.user.username} textBody={reply.text}/>
-            )})}
-</div>
+            {!user ? 
+                    <form >
+                        <textarea placeholder="You must be logged in to post a reply">
+                        </textarea>
+                    </form> :
+                    <ReplyForm commentId={commentId} fetchReplies={fetchReplies}/>}
+            {replies.map((reply) => {
+                return (<Reply user={reply.user.username} textBody={reply.text}/>)})}
+        </div>
 
      );
 }

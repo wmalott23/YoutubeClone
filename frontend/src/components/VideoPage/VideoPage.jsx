@@ -11,7 +11,8 @@ import CommentList from "../CommentList/CommentList";
 const VideoPage = (props) => {
 
     const {videoId} = useParams()
-    const video = props.video
+    const {title} = useParams()
+    const {description} = useParams()
     const [searchResults, setSearchResults] = useState([])
 
 
@@ -30,11 +31,8 @@ const VideoPage = (props) => {
 
     return ( 
         <div>
-            <VideoPlayer videoId={videoId} />
-            {video.snippet.title}
-            {video.snippet.description}
+            <VideoPlayer videoId={videoId} title={title} description={description}/>
             <RelatedVideos searchResults={searchResults} setVideo={props.setVideo} />
-
             <CommentList videoId={videoId}/>
         </div>
         

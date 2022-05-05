@@ -39,7 +39,7 @@ const CommentForm = (props) => {
             <textarea value={textBody} placeholder="Write your comment here!" onChange={(event) => setTextBody(event.target.value)}>
             </textarea>
             <button type="submit">
-                Submit
+                Comment
             </button>
         </form>
      );

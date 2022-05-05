@@ -34,7 +34,7 @@ const ReplyForm = (props) => {
             <textarea value={textBody} placeholder="Write your reply here!" onChange={(event) => setTextBody(event.target.value)}>
             </textarea>
             <button type="submit">
-                Submit
+                Reply
             </button>
         </form>
      );

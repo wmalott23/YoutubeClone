@@ -14,7 +14,7 @@ const CommentList = (props) => {
 
     useEffect(() => {
         fetchComments();
-        }, [])    
+        }, [videoId])    
 
     const fetchComments = async () => { 
         try {
@@ -31,8 +31,6 @@ const CommentList = (props) => {
             {!user ? 
                 <form >
                     <textarea placeholder="You must be logged in to post a comment"/>
-                    <button >
-                    </button>
                 </form> :
                 <CommentForm videoId={videoId} fetchComments={fetchComments}/>
             }

@@ -33,7 +33,7 @@ const HomePage = (props) => {
       {videos.map((video, index) => (
           <div key={index}>
             {video.snippet.title}
-            <Link to={`/video/${video.id.videoId}`} onClick={props.setVideo(video)}>
+            <Link to={`/video/${video.id.videoId}/${video.snippet.title}/${video.snippet.description}`} onClick={props.setVideo(video)}>
               <img src={video.snippet.thumbnails.high.url} alt="no video"/>
             </Link>
           </div>
