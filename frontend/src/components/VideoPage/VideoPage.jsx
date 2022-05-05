@@ -30,7 +30,7 @@ const VideoPage = (props) => {
           };
           
         fetchVideos();
-      }, []);
+      }, [videoId]);
 
     return ( 
         <div>
