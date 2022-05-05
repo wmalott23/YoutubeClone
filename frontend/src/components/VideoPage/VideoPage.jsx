@@ -11,9 +11,12 @@ import CommentList from "../CommentList/CommentList";
 const VideoPage = (props) => {
 
     const {videoId} = useParams()
-    const {title} = useParams()
-    const {description} = useParams()
+    // const {title} = useParams()
+    // const {description} = useParams()
     const [searchResults, setSearchResults] = useState([])
+    const [video, setVideo] = useState(props.video)
+    // const [title, setTitle] = useState("")
+    // const [description, setDescription] = useState("")
 
 
     useEffect(() => {
@@ -31,8 +34,11 @@ const VideoPage = (props) => {
 
     return ( 
         <div>
-            <VideoPlayer videoId={videoId} title={title} description={description}/>
-            <RelatedVideos searchResults={searchResults} setVideo={props.setVideo} />
+          {console.log(props.video)}
+            <VideoPlayer videoId={videoId} />
+            {props.video.snippet.title}
+            {props.video.snippet.description}
+            <RelatedVideos searchResults={searchResults} setVideo={setVideo} />
             <CommentList videoId={videoId}/>
         </div>
         

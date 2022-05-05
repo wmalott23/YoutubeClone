@@ -35,8 +35,8 @@ const ReplyList = (props) => {
                         </textarea>
                     </form> :
                     <ReplyForm commentId={commentId} fetchReplies={fetchReplies}/>}
-            {replies.map((reply) => {
-                return (<Reply user={reply.user.username} textBody={reply.text}/>)})}
+            {replies.map((reply, index) => {
+                return (<Reply key={index} user={reply.user.username} textBody={reply.text}/>)})}
         </div>
 
      );

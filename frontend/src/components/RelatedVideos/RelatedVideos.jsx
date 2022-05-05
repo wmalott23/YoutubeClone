@@ -11,7 +11,7 @@ const RelatedVideos = (props) => {
             {props.searchResults.map((searchResult, index) => (
             <div key={index}>
               {searchResult.snippet.title}
-              <Link to={`/video/${searchResult.id.videoId}/${searchResult.snippet.title}/${searchResult.snippet.description}`} onClick={props.setVideo(searchResult)}>
+              <Link to={`/video/${searchResult.id.videoId}/`} onClick={props.setVideo(searchResult)}>
                 <img src={searchResult.snippet.thumbnails.default.url} alt="no video"/>
               </Link>
             </div>
