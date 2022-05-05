@@ -38,8 +38,10 @@ const CommentList = (props) => {
             }
             {comments.map((comment) => {
                 return (
-                        <Comment user={comment.user.username} textBody={comment.text}/>
+                    <div>
+                        <Comment user={comment.user.username} textBody={comment.text} commentId={comment.id} likes={comment.likes} dislikes={comment.dislikes} videoId={props.videoId}/>
                         <ReplyList commentId={comment.id} />
+                    </div>
                 )})}
         </div>
      );

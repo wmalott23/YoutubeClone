@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useAuth from "../../hooks/useAuth";
 import Reply from '../Reply/Reply';
+import axios from 'axios';
+import ReplyForm from "../ReplyForm/ReplyForm";
 
 
 const ReplyList = (props) => {
@@ -32,7 +34,7 @@ const ReplyList = (props) => {
         <div>
         {!user ? 
                 <form >
-                    <textarea placeholder="You must be logged in to post a comment">
+                    <textarea placeholder="You must be logged in to post a reply">
                     </textarea>
                     <button >
                     </button>

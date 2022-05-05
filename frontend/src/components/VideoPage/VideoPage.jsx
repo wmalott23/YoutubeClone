@@ -33,7 +33,7 @@ const VideoPage = (props) => {
             <VideoPlayer videoId={videoId} />
             {video.snippet.title}
             {video.snippet.description}
-            {/* <RelatedVideos searchResults={searchResults} setVideo={props.setVideo} /> */}
+            <RelatedVideos searchResults={searchResults} setVideo={props.setVideo} />
 
             <CommentList videoId={videoId}/>
         </div>
