@@ -7,12 +7,10 @@ const LikeDislike = (props) => {
 
     const [user, token] = useAuth()
     const [temp, setTemp] = useState({video_id: props.videoId, text: props.textBody, likes: props.likes, dislikes: props.dislikes})
-    let showLikes = temp.likes
-    // useEffect(() => {
-    //     const resetTemp = () => {
-    //         setTemp()
-    //     }
-    // })
+    const showLikes = temp.likes
+    const showDislikes = temp.dislikes
+
+
 
     const handleLike = async () => {
         setTemp(temp.likes++)
@@ -21,23 +19,24 @@ const LikeDislike = (props) => {
                 Authorization: "Bearer " + token,
             }
         })
-
+        setTemp(request.data)
     }
 
     const handleDislike = async () => {
-        temp.dislikes++
+        setTemp(temp.dislikes++)
         let request = await axios.put(`http://127.0.0.1:8000/api/comments/${props.commentId}/update/`, temp, {
             headers: {
                 Authorization: "Bearer " + token,
             }
         })
+        setTemp(request.data)
     }
 
     return ( 
         <div>
             {showLikes}
             <button onClick={handleLike}>Like</button>
-            {temp.dislikes}
+            {showDislikes}
             <button onClick={handleDislike}>Dislike</button>
         </div>
      );
