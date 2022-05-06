@@ -11,35 +11,27 @@ import SearchBar from "../SearchBar/SearchBar"
 const VideoPage = (props) => {
 
     const {videoId} = useParams()
-    // const {title} = useParams()
-    // const {description} = useParams()
     const [searchResults, setSearchResults] = useState([])
-    const [video, setVideo] = useState(props.video)
-    // const [title, setTitle] = useState("")
-    // const [description, setDescription] = useState("")
 
 
     useEffect(() => {
         const fetchVideos = async () => {
-            try {
-              let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${API_KEY}&part=snippet`)
+              let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&key=${API_KEY}&part=snippet&type=video`);
               setSearchResults(response.data.items);
-            } catch (error) {
-              console.log(error.message);
-            }
-          };
-          
-        fetchVideos();
+         }
+         fetchVideos();
       }, [videoId]);
 
     return ( 
         <div>
           <SearchBar />
           {console.log(props.video)}
+          {console.log(searchResults)}
             <VideoPlayer videoId={videoId} />
             {props.video.snippet.title}
             {props.video.snippet.description}
-            <RelatedVideos searchResults={searchResults} setVideo={setVideo} />
+              {searchResults.map((searchResult, index) => (
+              <RelatedVideos key={index} searchResult={searchResult} title={searchResult.snippet.title} videoId={searchResult.id.videoId} setVideo={props.setVideo} image={searchResult.snippet.thumbnails.default.url}/>))}
             <CommentList videoId={videoId}/>
         </div>
         

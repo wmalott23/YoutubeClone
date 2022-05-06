@@ -25,11 +25,13 @@ const HomePage = (props) => {
       }
     };
     fetchVideos();
+    console.log(videos)
   }, [token]);
+  
   return (
     <div className="container">
       <SearchBar />
-      <h1>Home Page for {user.username}!</h1>
+      <h1 className="text-white">Home Page for {user.username}!</h1>
       {videos.map((video, index) => (
           <div key={index}>
             {video.snippet.title}

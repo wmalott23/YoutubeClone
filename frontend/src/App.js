@@ -22,9 +22,9 @@ function App() {
   const [video, setVideo] = useState({})
   
   return (
-    <div>
+    <div className="background">
       <Navbar />
-      <Routes>
+      <Routes >
         <Route
           path="/"
           element={
@@ -33,7 +33,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/video/:videoId/" element={<VideoPage video = {video} setVideo={setVideo}/>} />
+        <Route path="/video/:videoId/" element={<VideoPage video={video} setVideo={setVideo}/>} />
         <Route path="/search/:searchTerm" element={<SearchPage setVideo = {setVideo} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
