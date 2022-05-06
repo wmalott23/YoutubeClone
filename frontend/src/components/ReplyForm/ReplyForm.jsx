@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import "./ReplyForm.css"
 
 
 const ReplyForm = (props) => {
@@ -30,7 +31,7 @@ const ReplyForm = (props) => {
     }
 
     return ( 
-        <form onSubmit={storeReply}>
+        <form className="reply_form" onSubmit={storeReply}>
             <textarea value={textBody} placeholder="Write your reply here!" onChange={(event) => setTextBody(event.target.value)}>
             </textarea>
             <button type="submit">

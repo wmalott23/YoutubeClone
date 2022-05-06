@@ -6,6 +6,7 @@ import API_KEY from "../../secret.jsx";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import CommentList from "../CommentList/CommentList";
 import SearchBar from "../SearchBar/SearchBar"
+import "./VideoPage.css"
 
 
 const VideoPage = (props) => {
@@ -24,14 +25,14 @@ const VideoPage = (props) => {
       }, [videoId]);
 
     return ( 
-        <div className="text-white d-flex flex-column align-content-center p-1">
-          {console.log(props.video)}
-          {console.log(searchResults)}
+        <div className="text-white d-flex flex-column justify-content-center p-1">
           <SearchBar />
-            <VideoPlayer videoId={videoId} />
-            {props.video.snippet.title}
-            {props.video.snippet.description}
-            <RelatedVideos searchResults={searchResults} setVideo={props.setVideo} />
+            <VideoPlayer className="justify-self-center" videoId={videoId} />
+            <h2>{props.video.snippet.title}</h2>
+            <div className="description overflow-auto">
+              {props.video.snippet.description}
+            </div>
+            <RelatedVideos className="text-white d-flex flex-row p-1"searchResults={searchResults} setVideo={props.setVideo} />
             <CommentList videoId={videoId}/>
         </div>
         

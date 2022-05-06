@@ -28,7 +28,7 @@ const ReplyList = (props) => {
     }
 
     return ( 
-        <div>
+        <div className="d-flex flex-column col-md-6 align-content-end">
             {!user ? 
                     <form >
                         <textarea placeholder="You must be logged in to post a reply">
@@ -37,6 +37,7 @@ const ReplyList = (props) => {
                     <ReplyForm commentId={commentId} fetchReplies={fetchReplies}/>}
             {replies.map((reply, index) => {
                 return (<Reply key={index} user={reply.user.username} textBody={reply.text}/>)})}
+                
         </div>
 
      );

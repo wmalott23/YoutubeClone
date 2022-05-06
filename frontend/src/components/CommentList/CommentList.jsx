@@ -27,7 +27,7 @@ const CommentList = (props) => {
 
     
     return ( 
-        <div>
+        <div className="d-flex flex-column col-md-8 justify-content-center">
             {!user ? 
                 <form >
                     <textarea placeholder="You must be logged in to post a comment"/>
@@ -37,8 +37,8 @@ const CommentList = (props) => {
             {comments.map((comment, index) => {
                 return (
                     <div key={index}>
-                        <Comment user={comment.user.username} textBody={comment.text} commentId={comment.id} likes={comment.likes} dislikes={comment.dislikes} videoId={props.videoId}/>
-                        <ReplyList commentId={comment.id} />
+                        <Comment className="col-md-6 justify-content-start" user={comment.user.username} textBody={comment.text} commentId={comment.id} likes={comment.likes} dislikes={comment.dislikes} videoId={props.videoId}/>
+                        <ReplyList className="col-md-6 justify-content-end" commentId={comment.id} />
                     </div>
                 )})}
         </div>

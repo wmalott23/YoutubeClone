@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { PlayBtn } from 'react-bootstrap-icons';
+import "./SearchBar.css"
 
 
 const SearchBar = (props) => {
@@ -8,10 +10,10 @@ const SearchBar = (props) => {
 
 
     return ( 
-        <form>
+        <form className="m-2">
                 <input type="text" placeholder="Search Terms" value={searchTerm} onChange={(event) => {setSearchTerm(event.target.value)}}/>
                 <Link to={`/search/${searchTerm}`}> 
-                <button type="submit"></button>
+                    <PlayBtn color="white" className="button red-text pr-3 m-1" size={48} type="submit"></PlayBtn>
                 </Link>
         </form>
      );
