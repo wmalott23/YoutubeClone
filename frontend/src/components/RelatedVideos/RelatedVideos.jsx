@@ -6,12 +6,16 @@ import { Link } from 'react-router-dom';
 const RelatedVideos = (props) => {
   
     return ( 
-            <div>
-              {props.title}
-              <Link to={`/video/${props.videoId}/`} onClick={props.setVideo(props.searchResult)}>
-                <img src={props.image} alt="no video"/>
+        <div>
+            {props.searchResults.map((searchResult, index) => (
+            <div key={index}>
+              {searchResult.snippet.title}
+              <Link to={`/video/${searchResult.id.videoId}/`} onClick={props.setVideo(searchResult)}>
+                <img src={searchResult.snippet.thumbnails.default.url} alt="no video"/>
               </Link>
             </div>
+          ))}
+        </div>
     )
 }
  

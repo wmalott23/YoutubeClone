@@ -10,8 +10,6 @@ const VideoPlayer = (props) => {
                 src={`https://www.youtube.com/embed/${props.videoId}?autoplay=1&origin=http://example.com`}
                 frameBorder="0">
             </iframe>
-            {/* {props.title} */}
-            {/* {props.description} */}
         </div>
      );
 }

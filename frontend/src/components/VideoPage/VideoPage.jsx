@@ -12,26 +12,36 @@ const VideoPage = (props) => {
 
     const {videoId} = useParams()
     const [searchResults, setSearchResults] = useState([])
+    const [tempResponse, setTempResponse] = useState([])
+    const [video, setVideo] = useState(props.video)
 
 
     useEffect(() => {
         const fetchVideos = async () => {
               let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&key=${API_KEY}&part=snippet&type=video`);
-              setSearchResults(response.data.items);
+              setTempResponse(response.data.items)
+              setSearchResults(tempResponse.filter(function(el){
+                if(typeof el.snippet != "undefined") return true;
+              }))
          }
          fetchVideos();
       }, [videoId]);
 
     return ( 
-        <div>
-          <SearchBar />
+        <div className="text-white d-flex flex-column align-content-center p-1">
           {console.log(props.video)}
+          {console.log(tempResponse)}
+          {console.log(tempResponse[0].snippet)}
+          {console.log(tempResponse[1].snippet)}
+          {console.log(tempResponse[2].snippet)}
+          {console.log(tempResponse[3].snippet)}
+          {console.log(tempResponse[4].snippet)}
           {console.log(searchResults)}
+          <SearchBar />
             <VideoPlayer videoId={videoId} />
             {props.video.snippet.title}
             {props.video.snippet.description}
-              {searchResults.map((searchResult, index) => (
-              <RelatedVideos key={index} searchResult={searchResult} title={searchResult.snippet.title} videoId={searchResult.id.videoId} setVideo={props.setVideo} image={searchResult.snippet.thumbnails.default.url}/>))}
+            <RelatedVideos searchResults={searchResults} setVideo={props.setVideo} />
             <CommentList videoId={videoId}/>
         </div>
         

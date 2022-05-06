@@ -27,17 +27,22 @@ const HomePage = (props) => {
     fetchVideos();
     console.log(videos)
   }, [token]);
-  
+
   return (
-    <div className="container">
+    <div className="container d-flex flex-column align-content-center p-1">
       <SearchBar />
       <h1 className="text-white">Home Page for {user.username}!</h1>
       {videos.map((video, index) => (
-          <div key={index}>
-            {video.snippet.title}
+          <div key={index} className="text-white d-flex flex-column align-content-center p-1">
             <Link to={`/video/${video.id.videoId}/`} onClick={props.setVideo(video)}>
               <img src={video.snippet.thumbnails.high.url} alt="no video"/>
             </Link>
+            <h1>
+              {video.snippet.title}
+            </h1>
+            <h5 className="overflow-hidden">
+            {video.snippet.description}
+            </h5>
           </div>
         ))}
     </div>
