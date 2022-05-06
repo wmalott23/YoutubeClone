@@ -15,27 +15,24 @@ const VideoPage = (props) => {
     const [tempResponse, setTempResponse] = useState([])
     const [video, setVideo] = useState(props.video)
 
+    const fetchVideos = async () => {
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&key=${API_KEY}&part=snippet&type=video`);
+      setTempResponse(response.data.items)
+      }
+    const filterVideos = () => {
+      setSearchResults(tempResponse.filter(function(el){
+        if(typeof el.snippet !== "undefined") return true}));
+    }
 
     useEffect(() => {
-        const fetchVideos = async () => {
-              let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&key=${API_KEY}&part=snippet&type=video`);
-              setTempResponse(response.data.items)
-              setSearchResults(tempResponse.filter(function(el){
-                if(typeof el.snippet != "undefined") return true;
-              }))
-         }
          fetchVideos();
+         filterVideos();
       }, [videoId]);
 
     return ( 
         <div className="text-white d-flex flex-column align-content-center p-1">
           {console.log(props.video)}
           {console.log(tempResponse)}
-          {console.log(tempResponse[0].snippet)}
-          {console.log(tempResponse[1].snippet)}
-          {console.log(tempResponse[2].snippet)}
-          {console.log(tempResponse[3].snippet)}
-          {console.log(tempResponse[4].snippet)}
           {console.log(searchResults)}
           <SearchBar />
             <VideoPlayer videoId={videoId} />
