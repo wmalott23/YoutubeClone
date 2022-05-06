@@ -35,8 +35,8 @@ const CommentForm = (props) => {
 
 
     return ( 
-        <form onSubmit={storeComment}>
-            <textarea value={textBody} placeholder="Write your comment here!" onChange={(event) => setTextBody(event.target.value)}>
+        <form className="p-1 m-1 border border-white rounded" onSubmit={storeComment}>
+            <textarea className="border border-white rounded" value={textBody} placeholder="Write your comment here!" onChange={(event) => setTextBody(event.target.value)}>
             </textarea>
             <button type="submit">
                 Comment

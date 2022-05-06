@@ -32,7 +32,7 @@ const ReplyForm = (props) => {
 
     return ( 
         <form className="reply_form" onSubmit={storeReply}>
-            <textarea value={textBody} placeholder="Write your reply here!" onChange={(event) => setTextBody(event.target.value)}>
+            <textarea className="border border-white rounded" value={textBody} placeholder="Write your reply here!" onChange={(event) => setTextBody(event.target.value)}>
             </textarea>
             <button type="submit">
                 Reply

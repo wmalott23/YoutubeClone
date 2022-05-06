@@ -8,7 +8,7 @@ const Reply = (props) => {
             <p>
                 {props.user}
             </p>
-            <textarea>
+            <textarea className="border border-white rounded">
                 {props.textBody}
             </textarea>
         </div>

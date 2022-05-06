@@ -31,7 +31,7 @@ const ReplyList = (props) => {
         <div className="d-flex flex-column col-md-6 align-content-end">
             {!user ? 
                     <form >
-                        <textarea placeholder="You must be logged in to post a reply">
+                        <textarea className="border border-white rounded" placeholder="You must be logged in to post a reply">
                         </textarea>
                     </form> :
                     <ReplyForm commentId={commentId} fetchReplies={fetchReplies}/>}

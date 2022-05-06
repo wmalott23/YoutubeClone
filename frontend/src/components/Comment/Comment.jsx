@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LikeDislike from '../LikeDislike/LikeDislike';
+import "./Comment.css";
 
 const Comment = (props) => {
     return ( 
@@ -7,10 +8,10 @@ const Comment = (props) => {
             <p>
                 {props.user}
             </p>
-            <textarea>
+            <textarea className="comment border border-white rounded overflow-auto">
                 {props.textBody}
             </textarea>
-            <LikeDislike likes={props.likes} dislikes={props.dislikes} videoId={props.videoId} textBody={props.textBody} commentId={props.commentId}/>
+            <LikeDislike className="border border-white rounded"likes={props.likes} dislikes={props.dislikes} videoId={props.videoId} textBody={props.textBody} commentId={props.commentId}/>
         </div>
      );
 }

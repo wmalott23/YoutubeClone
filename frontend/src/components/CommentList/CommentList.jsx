@@ -27,18 +27,18 @@ const CommentList = (props) => {
 
     
     return ( 
-        <div className="d-flex flex-column col-md-8 justify-content-center">
+        <div className="d-flex flex-column col-md-6 justify-content-center">
             {!user ? 
                 <form >
-                    <textarea placeholder="You must be logged in to post a comment"/>
+                    <textarea className="border border-white rounded" placeholder="You must be logged in to post a comment"/>
                 </form> :
                 <CommentForm videoId={videoId} fetchComments={fetchComments}/>
             }
             {comments.map((comment, index) => {
                 return (
-                    <div key={index}>
-                        <Comment className="col-md-6 justify-content-start" user={comment.user.username} textBody={comment.text} commentId={comment.id} likes={comment.likes} dislikes={comment.dislikes} videoId={props.videoId}/>
-                        <ReplyList className="col-md-6 justify-content-end" commentId={comment.id} />
+                    <div className="p-1 m-1 border-bottom border-white rounded" key={index}>
+                        <Comment className="col-md-6 justify-self-start" user={comment.user.username} textBody={comment.text} commentId={comment.id} likes={comment.likes} dislikes={comment.dislikes} videoId={props.videoId}/>
+                        <ReplyList className="col-md-6 justify-self-end" commentId={comment.id} />
                     </div>
                 )})}
         </div>
