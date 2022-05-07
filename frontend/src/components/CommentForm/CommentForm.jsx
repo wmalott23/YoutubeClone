@@ -4,7 +4,6 @@ import useAuth from "../../hooks/useAuth";
 
 
 
-
 const CommentForm = (props) => {
 
     const [textBody, setTextBody] = useState('')
@@ -35,13 +34,15 @@ const CommentForm = (props) => {
 
 
     return ( 
-        <form className="p-1 m-1 border border-white rounded" onSubmit={storeComment}>
-            <textarea className="border border-white rounded" value={textBody} placeholder="Write your comment here!" onChange={(event) => setTextBody(event.target.value)}>
-            </textarea>
-            <button type="submit">
-                Comment
-            </button>
-        </form>
+        <div className='row-align-end'>
+            <form className="p-1 m-1 border border-white rounded" onSubmit={storeComment}>
+                <textarea className="m-1 border border-white rounded" value={textBody} placeholder="Write your comment here!" onChange={(event) => setTextBody(event.target.value)}>
+                </textarea>
+                <button className='rounded-pill' type="submit">
+                    Comment
+                </button>
+            </form>
+        </div>
      );
 }
  

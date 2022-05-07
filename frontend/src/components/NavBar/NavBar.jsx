@@ -12,12 +12,12 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>HomePage</b>
+            <b>Home Page</b>
           </Link>
         </li>
         <li>
           {user ? (
-            <button onClick={logoutUser}>Logout</button>
+            <button className="rounded" onClick={logoutUser}>Logout</button>
           ) : (
             <button onClick={() => navigate("/login")}>Login</button>
           )}

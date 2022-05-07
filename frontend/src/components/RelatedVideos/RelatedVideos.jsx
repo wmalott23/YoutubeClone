@@ -11,15 +11,15 @@ const RelatedVideos = (props) => {
               if(typeof searchResult.snippet !== "undefined"){
                 return (
                   <div className="border-white text-white d-flex flex-center p-1 m-1 border border-white rounded" key={index}>
-                  <Link to={`/video/${searchResult.id.videoId}/`} onClick={props.setVideo(searchResult)}>
-                    <img src={searchResult.snippet.thumbnails.default.url} alt="no video"/>
-                  </Link>
-                  <div className="p-1 m-1">
-                    {searchResult.snippet.title}
-                  </div>
-                </div>)
+                    <Link to={`/video/${searchResult.id.videoId}/`} onClick={props.setVideo(searchResult)}>
+                      <img src={searchResult.snippet.thumbnails.default.url} alt="no video"/>
+                    </Link>
+                    <div className="p-1 m-1">
+                      {searchResult.snippet.title}
+                    </div>
+                  </div>)
               }})}
-          </div>
+        </div>
     )
 }
  
